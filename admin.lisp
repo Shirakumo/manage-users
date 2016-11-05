@@ -11,7 +11,7 @@
 
 (admin:define-panel manage users (:access (perm radiance admin users view) :icon "fa-user")
   (r-clip:process
-   (plump:parse (template "manage.ctml"))
+   (plump:parse (@template "manage.ctml"))
    :users (user:list)))
 
 (admin:define-panel edit users (:access (perm radiance admin users edit) :icon "fa-edit")
@@ -23,7 +23,7 @@
         (cond
           ((and (not confirm) (string-equal action "delete"))
            (r-clip:process
-            (plump:parse (template "confirm.ctml"))
+            (plump:parse (@template "confirm.ctml"))
             :username username))
           ((and confirm (not (string-equal confirm "yes")))
            (redirect "/users/manage"))
@@ -52,7 +52,7 @@
            (when (string= action "Add")
              (setf (user:field user (post-var "key")) (post-var "val")))           
            (r-clip:process
-            (plump:parse (template "edit.ctml"))
+            (plump:parse (@template "edit.ctml"))
             :user user
             :fields (user:fields user))))
         (redirect "/users/manage"))))
