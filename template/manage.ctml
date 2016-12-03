@@ -19,7 +19,7 @@
           <td lquery="(text (user:field * &quot;displayname&quot;))">DISPLAYNAME</td>
           <td lquery="(text (user:field * &quot;email&quot;))">E-MAIL</td>
 	  <td>
-            <form action="/users/edit" method="get">
+            <form @action="/users/edit" method="get">
 	      <input type="hidden" name="username" lquery="(val (user:username *))" />
 	      <input type="submit" name="action" value="Edit" />
 	      <input type="submit" name="action" value="Delete" />
@@ -32,13 +32,13 @@
 	  <td><input type="text" name="username" form="userExtensionForm" placeholder="Username" required="required" style="width:100%" autofocus="autofocus" /></td>
 	  <td><input type="text" name="displayname" form="userExtensionForm" placeholder="Displayname" style="width:100%" /></td>
 	  <td><input type="text" name="email" form="userExtensionForm" placeholder="E-Mail Address" style="width:100%" /></td>
-	  <td><form action="/users/edit" method="post" id="userExtensionForm">
+	  <td><form @action="/users/edit" method="post" id="userExtensionForm">
 	      <input type="submit" name="action" value="Add" />
 	  </form></td>
         </tr>
     </tbody>
   </table>
-  <form class="table-actions" id="massEditForm" action="/users/edit" method="post">
+  <form class="table-actions" id="massEditForm" @action="/users/edit" method="post">
     <input type="submit" name="action" value="Delete" />
   </form>
 </div>
