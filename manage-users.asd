@@ -10,7 +10,7 @@
 
 (defsystem manage-users
   :defsystem-depends-on (:radiance)
-  :class "radiance:module"
+  :class "radiance:virtual-module"
   :name "manage-users"
   :version "0.5.1"
   :license "Artistic"
