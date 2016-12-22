@@ -16,8 +16,8 @@
         <tr>
 	  <td><input type="checkbox" name="selected[]" form="massEditForm" lquery="(val (user:username *))" /></td>
           <td lquery="(text (user:username *))">USERNAME</td>
-          <td lquery="(text (user:field * &quot;displayname&quot;))">DISPLAYNAME</td>
-          <td lquery="(text (user:field * &quot;email&quot;))">E-MAIL</td>
+          <td lquery="(text (user:field &quot;displayname&quot; *))">DISPLAYNAME</td>
+          <td lquery="(text (user:field &quot;email&quot; *))">E-MAIL</td>
 	  <td>
             <form @action="/users/edit" method="get">
 	      <input type="hidden" name="username" lquery="(val (user:username *))" />

@@ -5,7 +5,7 @@
       <c:splice iterate="fields">
         <li>
           <label lquery="(text *)">Key</label>
-          <textarea name="KEY" lquery="(text (user:field (** :user) *)) (attr :name *)" />
+          <textarea name="KEY" lquery="(text (user:field * (** :user))) (attr :name *)" />
         </li>
       </c:splice>
       <li>

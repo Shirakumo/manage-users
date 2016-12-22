@@ -32,14 +32,14 @@
                  (displayname (post-var "displayname"))
                  (email (post-var "email")))
              (unless (string= email "")
-               (setf (user:field user "email") email))
+               (setf (user:field "email" user) email))
              (unless (string= displayname "")
-               (setf (user:field user "displayname") displayname))
+               (setf (user:field "displayname" user) displayname))
              (user:save user))
            (redirect "/users/manage"))
           ((string= action "Save")
            (loop for field in (user:fields user)
-                 do (setf (user:field user field) (post-var field)))
+                 do (setf (user:field field user) (post-var field)))
            (user:save user)
            (redirect "/users/manage"))
           ((string= action "Discard")
@@ -50,7 +50,7 @@
            (redirect "/users/manage"))
           (T
            (when (string= action "Add")
-             (setf (user:field user (post-var "key")) (post-var "val")))           
+             (setf (user:field (post-var "key") user) (post-var "val")))           
            (r-clip:process
             (plump:parse (@template "edit.ctml"))
             :user user
