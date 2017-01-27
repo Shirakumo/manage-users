@@ -17,7 +17,6 @@
     <div class="actionbar">
       <input type="hidden" name="username" value="USERNAME" lquery="(val (user:username user))" />
       <input type="submit" name="action" value="Save" />
-      <input type="submit" name="action" value="Discard" />
     </div>
   </form>
 </div>
