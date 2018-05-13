@@ -1,22 +1,39 @@
 <div>
   <h2>Edit User <c:splice lquery="(text (user:username user))" /></h2>
-  <form action="#" method="post" class="box">
-    <ul>
-      <c:splice iterate="fields">
-        <li>
-          <label lquery="(text (car *))">Key</label>
-          <textarea name="KEY" lquery="(text (cdr *)) (attr :name (car *))" />
-        </li>
-      </c:splice>
-      <li>
-        <label><input type="text" name="key" placeholder="KEY" /></label>
-        <textarea name="val" placeholder="VALUE"></textarea>
-        <input type="submit" name="action" value="Add" />
-      </li>
-    </ul>
-    <div class="actionbar">
-      <input type="hidden" name="username" value="USERNAME" lquery="(val (user:username user))" />
+  <div class="tablebox">
+    <table class="extendable actions interactive">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Value</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <c:splice iterate="fields">
+          <tr>
+            <td lquery="(text *)">Key</td>
+            <td><textarea name="KEY" form="massEditForm" style="width:100%" lquery="(text (user:field * (** :user))) (attr :name *)" /></td>
+	    <td><form @action="admin/users/edit" method="post" id="userExtensionForm">
+              <input type="hidden" name="username" lquery="(val (user:username (** :user)))" />
+              <input type="hidden" name="key" lquery="(val *)" />
+	      <input type="submit" name="field" value="Remove" />
+	    </form></td>
+          </tr>
+        </c:splice>
+        <tr class="tableExtensionRow">
+	  <td><input type="text" name="key" form="fieldExtensionForm" placeholder="KEY" required /></td>
+	  <td><textarea name="val" form="fieldExtensionForm" style="width:100%" placeholder="VALUE"></textarea></td>
+	  <td><form @action="admin/users/edit" method="post" id="fieldExtensionForm">
+            <input type="hidden" name="username" lquery="(val (user:username user))" />
+	    <input type="submit" name="field" value="Add" />
+	  </form></td>
+        </tr>
+      </tbody>
+    </table>
+    <form class="table-actions" id="massEditForm" @action="admin/users/edit" method="post">
+      <input type="hidden" name="username" lquery="(val (user:username user))" />
       <input type="submit" name="action" value="Save" />
-    </div>
-  </form>
+    </form>
+  </div>
 </div>

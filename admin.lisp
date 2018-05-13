@@ -37,6 +37,7 @@
                    (list (post/get "username"))
                    (post/get "selected[]")))
         (action (post/get "action"))
+        (field (post/get "field"))
         (confirm (post/get "confirm")))
     (if (or users (string-equal action "add"))
         (cond
@@ -72,8 +73,10 @@
                                               collect (cons "email[]" (user:field "email" user))))))
           (T
            (let ((user (first users)))
-             (when (string= action "Add")
+             (when (string= field "Add")
                (setf (user:field (post-var "key") user) (post-var "val")))
+             (when (string= field "Remove")
+               (user:remove-field (post-var "key") user))
              (r-clip:process
               (plump:parse (@template "edit.ctml"))
               :user (user:get user)
