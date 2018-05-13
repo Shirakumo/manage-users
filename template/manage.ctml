@@ -21,6 +21,7 @@
 	  <td>
             <form @action="admin/users/edit" method="get">
 	      <input type="hidden" name="username" lquery="(val (user:username *))" />
+              <input type="submit" name="action" value="Email" />
 	      <input type="submit" name="action" value="Edit" />
 	      <input type="submit" name="action" value="Delete" />
 	    </form>
@@ -39,6 +40,7 @@
     </tbody>
   </table>
   <form class="table-actions" id="massEditForm" @action="admin/users/edit" method="post">
+    <input type="submit" name="action" value="Email" />
     <input type="submit" name="action" value="Delete" />
   </form>
 </div>

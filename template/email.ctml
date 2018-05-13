@@ -1,0 +1,18 @@
+<div>
+  <h2>Send an Email</h2>
+  <c:when test="error"><div class="notice error" lquery="(html (r-ratify:present-error error))"></div></c:when>
+  <c:when test="info"><div class="notice info" lquery="(text info)"></div></c:when>
+  <form action="#" method="post" class="box">
+    <ul iterate="to">
+      <li><label>To:</label><input name="to[]" type="email" lquery="(val *)" autofocus /></li>
+    </ul>
+    <div>
+      <label>Subject:</label><input name="subject" required lquery="(val subject)" />
+    </div>
+    <textarea name="message" style="width: 100%; min-height: 300px" required lquery="(text message)"></textarea>
+    
+    <div class="actionbar">
+      <input type="submit" name="action" value="Send" />
+    </div>
+  </form>
+</div>
