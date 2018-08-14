@@ -15,9 +15,11 @@
         ((:send
           (ratify:with-errors-combined
             (dolist (to (post/get "to[]"))
-              (r-ratify::with-field-error (to)
-                (ratify:perform-test :email to))
-              (mail:send to (post/get "subject") (post/get "message"))))
+              (let ((to (string-trim " " to)))
+                (unless (string= to "")
+                  (r-ratify::with-field-error (to)
+                    (ratify:perform-test :email to))
+                  (mail:send to (post/get "subject") (post/get "message"))))))
           (setf info "Message sent.")))
       (r-clip:process
        (@template "email.ctml")
@@ -44,6 +46,7 @@
           ((and (not confirm) (string-equal action "delete"))
            (r-clip:process
             (plump:parse (@template "confirm.ctml"))
+            :action action
             :username (first users)))
           ((and confirm (not (string-equal confirm "yes")))
            (redirect (resource :admin :page "users" "manage")))

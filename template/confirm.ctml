@@ -1,0 +1,8 @@
+<div>
+  <h2>Are you sure?</h2>
+  <form action="#">
+    <input type="hidden" name="username" lquery="(val username)" />
+    <input type="hidden" name="action" lquery="(val action)" />
+    <input type="submit" name="confirm" value="Yes" />
+    <input type="submit" name="confirm" value="No" />
+  </form>
