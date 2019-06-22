@@ -13,7 +13,7 @@
   :class "radiance:virtual-module"
   :name "manage-users"
   :version "0.5.1"
-  :license "Artistic"
+  :license "zlib"
   :author "Nicolas Hafner <shinmera@tymoon.eu>"
   :maintainer "Nicolas Hafner <shinmera@tymoon.eu>"
   :description "Radiance administration interface to allow user management."
